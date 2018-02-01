@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+
+
+    <!-- TODO: Dont forget this here -->
+    <meta name="theme-color" content="#bada55"> 
+
+    <link rel="shortcut icon" href="agenda.png" type="image/x-icon">
+
+
+
+
+
+    <title>Notification Experiments</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/main.js" type="module"></script>
+
+</head>
+<body>
+
+<main>
+    
+    <header>
+        <p id="title">Agenda📝</p>
+    </header>
+
+    <section id="new_task">
+        <header>New Task</header>
+        <new-task></new-task>
+    </section>
+
+    <section id="task_list">
+        <header>Tasks</header>
+        <!-- TaskList will be created here -->
+    </section>
+
+</main>
+
+
+<!-- TEMPLATES -->
+
+<template id="a-task-template">
+
+    <details>
+        <summary>
+            <p>Title</p>
+            <time class="due_to">Due To</time>
+        </summary>
+
+        <div class="menu_bar">
+            <button class="icon-button" id="pin" disabled>Pin📌</button>
+            <button class="icon-button" id="copy" disabled>Copy📋</button>
+            <button class="icon-button" id="edit" disabled>Edit✏️️</button>
+            <button class="icon-button" id="done">Done✔️</button>
+            <!-- <time class="created_at">Created At</time> -->
+        </div>
+
+        <div class="description">Details</div>
+    </details>
+
+</template>
+
+
+<template id="new-task-template">
+
+    <input type="text" name="summary" id="summary" placeholder="Summary" tabindex="1">
+
+    <input type="datetime-local" name="datetime" id="datetime">
+    <!-- <button class="icon-button date">🗓️</button> -->
+    <button id="add" class="icon-button" tabindex="3">📝</button>
+
+    <textarea name="description" id="description" rows="2" tabindex="2" placeholder="Description"></textarea>
+    
+</template>
+
+
+<template id="task-list-template">
+
+    <div id="tasks">
+
+    </div>
+
+    <!-- <button class="icon-button" id="more">🔽More🔽</button> -->
+
+</template>
+    
+</body>
+</html>
