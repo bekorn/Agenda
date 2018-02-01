@@ -1,5 +1,18 @@
+You can use this app here => [bekorn.github.io/Agenda](https://bekorn.github.io/Agenda/)
 
-#### Resources
+### TODO List
+- [x] Store tasks on browser (IndexedDB)
+- [ ] Push notifications as reminders
+- [ ] Task Interactions
+  - [x] Add
+  - [x] Archive
+  - [ ] Pin
+  - [ ] Edit
+  - [ ] Copy
+- [ ] Task list filters
+- [ ] Live refreshing tasks
+
+## Resources
 
 Basic ServiceWorker Setup and Caching:
 https://developers.google.com/web/fundamentals/primers/service-workers/
