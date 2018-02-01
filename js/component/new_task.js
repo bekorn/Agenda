@@ -18,7 +18,7 @@ export default class NewTask extends HTMLElement {
         this.description = this.querySelector( "#description" );
         this.datetime = this.querySelector( "#datetime" );
         const now = new Date();
-        const local_now = new Date( now.getTime() + (now.getTimezoneOffset()*1000*60) );
+        const local_now = new Date( now.getTime() - (now.getTimezoneOffset()*1000*60) );
         this.datetime.value = local_now.toISOString().substring(0, 16);
 
         this.submit_button.addEventListener( "click", (event) => {
