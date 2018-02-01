@@ -16,8 +16,7 @@ window.addEventListener( "load", () => {
     task_list = new TaskList();
     document.getElementById( "task_list" ).appendChild( task_list );
 
-    get_notification_permision();
-
+    // get_notification_permision();
     // init_service_worker();
 });
 
