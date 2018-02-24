@@ -13,6 +13,7 @@ export default class NewTask extends HTMLElement {
 
         this.appendChild( NewTask.template );
 
+        this.form = this.querySelector( "form" );
         this.submit_button = this.querySelector( "#add" );
         this.summary = this.querySelector( "#summary" );
         this.description = this.querySelector( "#description" );
@@ -21,11 +22,19 @@ export default class NewTask extends HTMLElement {
         const local_now = new Date( now.getTime() - (now.getTimezoneOffset()*1000*60) );
         this.datetime.value = local_now.toISOString().substring(0, 16);
 
-        this.submit_button.addEventListener( "click", (event) => {
+        this.form.addEventListener( "submit", (event) => {
 
-            this.submit_button.blur();
+            event.preventDefault();
 
             this.add_task();
+
+            //  Clear form
+            this.submit_button.blur();
+            this.form.reset();
+
+            const now = new Date();
+            const local_now = new Date( now.getTime() - (now.getTimezoneOffset()*1000*60) );
+            this.datetime.value = local_now.toISOString().substring(0, 16);
         });
     }
 

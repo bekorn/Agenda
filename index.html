@@ -28,11 +28,14 @@
 </head>
 <body>
 
+<header>
+    <p id="title">Agenda📝</p>
+    <a href="https://github.com/bekorn/Agenda" id="github-link">
+        <img src="GitHub-Mark-Black.svg" alt="github">
+    </a>
+</header>
+
 <main>
-    
-    <header>
-        <p id="title">Agenda📝</p>
-    </header>
 
     <section id="new_task">
         <header>New Task</header>
@@ -73,13 +76,17 @@
 
 <template id="new-task-template">
 
-    <input type="text" name="summary" id="summary" placeholder="Summary" tabindex="1">
+    <form autocomplete="off">
 
-    <input type="datetime-local" name="datetime" id="datetime">
-    <!-- <button class="icon-button date">🗓️</button> -->
-    <button id="add" class="icon-button" tabindex="3">📝</button>
+        <input required type="text" name="summary" id="summary" placeholder="Summary" tabindex="1">
 
-    <textarea name="description" id="description" rows="2" tabindex="2" placeholder="Description"></textarea>
+        <input required type="datetime-local" name="datetime" id="datetime" tabindex="3">
+        <!-- <button class="icon-button date">🗓️</button> -->
+        <button type="submit" id="add" class="icon-button" tabindex="4">📝</button>
+
+        <textarea required name="description" id="description" rows="2" tabindex="2" placeholder="Description"></textarea>
+
+    </form>
     
 </template>
 
