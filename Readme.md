@@ -15,7 +15,7 @@ You can use this app here => [bekorn.github.io/Agenda](https://bekorn.github.io/
 ## Resources
 
 Basic ServiceWorker Setup and Caching:
-https://developers.google.com/web/fundamentals/primers/service-workers/
+https://developers.google.com/web/fundamentals/primers/service-workers
 
 General Documentation on ServiceWorkers:
 https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker
@@ -25,3 +25,6 @@ https://developers.google.com/web/fundamentals/web-components/customelements
 
 IndexedDB:
 https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB
+
+Favicon:
+https://favicon.io
