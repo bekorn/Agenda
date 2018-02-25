@@ -82,6 +82,20 @@
 
 <template id="task-list-template">
 
+    <form autocomplete="off">
+        <input type="text" name="verbal-filter" id="verbal-filter" placeholder="Contains">
+
+        <div>
+            <input type="checkbox" name="archived-filter" id="archived-filter" hidden>
+            <label for="archived-filter" class="icon-button">Archived🗃️</label>
+
+            <input type="checkbox" name="active-filter" id="active-filter" hidden>
+            <label for="active-filter" class="icon-button">Urgent❗</label>
+        </div>
+
+        <button type="submit" class="icon-button" disabled>🔎</button>
+    </form>
+
     <div id="tasks">
 
     </div>

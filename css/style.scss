@@ -3,6 +3,17 @@ $header-color : orange;
 
 $section-border-radius : 8px;
 $section-content-border-radius : 4px;
+$section-content-gap : 8px;
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:500|Zilla+Slab:700');
+
+$font-short-text : 'Zilla Slab', serif;
+$font-long-text : 'Roboto', sans-serif;
+
+// @import url('https://fonts.googleapis.com/css?family=Raleway:500|Zilla+Slab:500');
+
+// $font-short-text : 'Zilla Slab', serif;
+// $font-long-text : 'Raleway', sans-serif;
 
 * {
     margin: 0;
@@ -18,7 +29,7 @@ $section-content-border-radius : 4px;
                 box-shadow 0.2s ease-in-out,
                 margin 0.2s ease-in-out,
                 padding 0.2s ease-in-out,
-                filter 1s linear;
+                filter 0.2s linear;
 
     // transition: all 0.2s ease-in-out;
     // transition-property: transform, box-shadow, background-color, margin, padding;
@@ -27,6 +38,7 @@ $section-content-border-radius : 4px;
 :root {
     position: relative;
     color: #333;
+    font-family: $font-long-text;
     font-size: 24px;
 
     @media( max-width: $small-width ) {
@@ -42,9 +54,7 @@ body {
     max-width: 100vw;
     width: 100vw;
     overflow-x: hidden;
-
     background-color: antiquewhite;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -60,6 +70,79 @@ body {
 
     &:hover {
         box-shadow: inset 0 0 0 16px fade-out( black, 0.5 );
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 720px;
+    padding: 8px;
+
+    @media( max-width: $small-width ) {
+        align-self: stretch;
+        width: unset;
+    }
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    padding: $section-content-gap;
+    margin-top: $section-content-gap * 2;
+
+    background-color: floralwhite;
+    border-radius: $section-border-radius;
+
+    &:last-child {
+        margin-bottom: $section-content-gap * 4;
+    }
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: $section-content-gap;
+
+    user-select: none;
+    font-family: $font-short-text;
+    font-size: 1.4em;
+}
+
+body > header {
+    min-width: 100vw;
+    padding: 10px;
+
+    font-size: 2rem;
+    background-color: $header-color;
+
+    #github-link {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-self: flex-end;
+        width: 1em;
+
+        img {
+            pointer-events: none;
+            width: 100%;
+        }
+    }
+}
+
+form {
+    filter: saturate(0.6);
+
+    &:focus-within, &:hover {
+        filter: saturate(1);
+    }
+
+    & > * {
+        display: flex;
+        padding: 4px;
+        min-width: 0;
     }
 }
 
@@ -92,87 +175,67 @@ input, textarea {
     // }
 }
 
-header {
+label {
     user-select: none;
-}
-
-body > header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-width: 100vw;
-    padding: 10px;
-
-    font-size: 2rem;
-    background-color: $header-color;
-
-    #github-link {
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        align-self: flex-end;
-        width: 1em;
-
-        img {
-            pointer-events: none;
-            width: 100%;
-        }
-    }
 }
 
 .icon-button {
     min-height: 1.0em;
     min-width: 1.0em;
     padding: 0.3em;
+    align-self: center;
 
     border-radius: 2em;
-    align-self: stretch;
 
-    &:hover, &:focus {
+    &:hover {
         transform: scale( 1.6 );
         background-color: white;
-        box-shadow: 0 0 10px -4px gray;
-    }
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    width: 720px;
-    padding: 16px;
-
-    @media( max-width: $small-width ) {
-        align-self: stretch;
-        width: unset;
-        padding: 8px;
-    }
-}
-
-section {
-    display: flex;
-    flex-direction: column;
-    padding: 8px;
-    margin-top: 16px;
-
-    background-color: floralwhite;
-    border-radius: $section-border-radius;
-
-    & > header {
-        font-size: 1.4em;
-        text-align: center;
-        padding-bottom: 8px;
-    }
-
-    &:last-child {
-
-        margin-bottom: 32px;
+        box-shadow: 0 0 0.5em -0.2em black;
     }
 }
 
 task-list {
     display: flex;
     flex-direction: column;
+
+    & > form {
+        display: grid;
+        grid-template: "verbal attribute search" / auto auto 1fr;
+        grid-gap: $section-content-gap;
+        margin-bottom: $section-content-gap;
+        padding: $section-content-gap;
+
+        @media( max-width: $small-width ) {
+            grid-template-areas: "verbal verbal verbal" "attribute attribute search"
+        }
+
+        background-color: orange;
+        border-radius: $section-content-border-radius;
+
+        & > input[type="text"] {
+            grid-area: verbal;
+        }
+
+        & > button[type="submit"] {
+            margin-left: auto;
+            grid-area: search;
+        }
+
+        & > div {
+            grid-area: attribute;
+            padding: 0;
+
+            & > label {
+                margin-right: $section-content-gap;
+                background-color: gray !important;
+                font-size: 0.8rem;
+            }
+    
+            & > input:checked + label {
+                background-color: white !important;
+            }
+        }
+    }
 
     & > #tasks {
         display: flex;
@@ -287,19 +350,25 @@ new-task {
     & > form {
         display: grid;
         grid-template-columns: 1fr auto auto;
-        padding: 8px;
-        grid-gap: 6px;
-        background-color: #C8E6C9;
+        padding: $section-content-gap;
+        grid-gap: $section-content-gap;
         border-radius: $section-content-border-radius;
 
+        background-color: rgb(113, 211, 118);;
+        // background-color: #C8E6C9;
+        
+        // &:focus-within {
+        //     background-color: rgb(113, 211, 118);
+        // }
+
         & > * {
+            display: flex;
             padding: 4px;
             min-width: 0;
         }
     
         & > input[type=datetime-local] {
-            font-family: Consolas;
-            font-size: 0.5rem
+            font-size: 0.6rem
         }
     
         & > textarea {
@@ -308,10 +377,6 @@ new-task {
             resize: vertical;
             
             font-size: 0.8rem;
-        }
-
-        &:focus-within {
-                background-color: rgb(113, 211, 118);
         }
     }
 }

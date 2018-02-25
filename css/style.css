@@ -1,8 +1,9 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:500|Zilla+Slab:700");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, margin 0.2s ease-in-out, padding 0.2s ease-in-out, filter 1s linear;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, margin 0.2s ease-in-out, padding 0.2s ease-in-out, filter 0.2s linear;
 }
 
 *:focus {
@@ -12,6 +13,7 @@
 :root {
   position: relative;
   color: #333;
+  font-family: "Roboto", sans-serif;
   font-size: 24px;
 }
 
@@ -30,7 +32,6 @@ body {
   width: 100vw;
   overflow-x: hidden;
   background-color: antiquewhite;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -47,6 +48,78 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   box-shadow: inset 0 0 0 16px rgba(0, 0, 0, 0.5);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 720px;
+  padding: 8px;
+}
+
+@media (max-width: 768px) {
+  main {
+    align-self: stretch;
+    width: unset;
+  }
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  margin-top: 16px;
+  background-color: floralwhite;
+  border-radius: 8px;
+}
+
+section:last-child {
+  margin-bottom: 32px;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  user-select: none;
+  font-family: "Zilla Slab", serif;
+  font-size: 1.4em;
+}
+
+body > header {
+  min-width: 100vw;
+  padding: 10px;
+  font-size: 2rem;
+  background-color: orange;
+}
+
+body > header #github-link {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  width: 1em;
+}
+
+body > header #github-link img {
+  pointer-events: none;
+  width: 100%;
+}
+
+form {
+  filter: saturate(0.6);
+}
+
+form:focus-within, form:hover {
+  filter: saturate(1);
+}
+
+form > * {
+  display: flex;
+  padding: 4px;
+  min-width: 0;
 }
 
 button {
@@ -70,85 +143,67 @@ input, textarea {
   color: unset;
 }
 
-header {
+label {
   user-select: none;
-}
-
-body > header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 100vw;
-  padding: 10px;
-  font-size: 2rem;
-  background-color: orange;
-}
-
-body > header #github-link {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-self: flex-end;
-  width: 1em;
-}
-
-body > header #github-link img {
-  pointer-events: none;
-  width: 100%;
 }
 
 .icon-button {
   min-height: 1.0em;
   min-width: 1.0em;
   padding: 0.3em;
+  align-self: center;
   border-radius: 2em;
-  align-self: stretch;
 }
 
-.icon-button:hover, .icon-button:focus {
+.icon-button:hover {
   transform: scale(1.6);
   background-color: white;
-  box-shadow: 0 0 10px -4px gray;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  width: 720px;
-  padding: 16px;
-}
-
-@media (max-width: 768px) {
-  main {
-    align-self: stretch;
-    width: unset;
-    padding: 8px;
-  }
-}
-
-section {
-  display: flex;
-  flex-direction: column;
-  padding: 8px;
-  margin-top: 16px;
-  background-color: floralwhite;
-  border-radius: 8px;
-}
-
-section > header {
-  font-size: 1.4em;
-  text-align: center;
-  padding-bottom: 8px;
-}
-
-section:last-child {
-  margin-bottom: 32px;
+  box-shadow: 0 0 0.5em -0.2em black;
 }
 
 task-list {
   display: flex;
   flex-direction: column;
+}
+
+task-list > form {
+  display: grid;
+  grid-template: "verbal attribute search" / auto auto 1fr;
+  grid-gap: 8px;
+  margin-bottom: 8px;
+  padding: 8px;
+  background-color: orange;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  task-list > form {
+    grid-template-areas: "verbal verbal verbal" "attribute attribute search";
+  }
+}
+
+task-list > form > input[type="text"] {
+  grid-area: verbal;
+}
+
+task-list > form > button[type="submit"] {
+  margin-left: auto;
+  grid-area: search;
+}
+
+task-list > form > div {
+  grid-area: attribute;
+  padding: 0;
+}
+
+task-list > form > div > label {
+  margin-right: 8px;
+  background-color: gray !important;
+  font-size: 0.8rem;
+}
+
+task-list > form > div > input:checked + label {
+  background-color: white !important;
 }
 
 task-list > #tasks {
@@ -260,19 +315,19 @@ new-task > form {
   display: grid;
   grid-template-columns: 1fr auto auto;
   padding: 8px;
-  grid-gap: 6px;
-  background-color: #C8E6C9;
+  grid-gap: 8px;
   border-radius: 4px;
+  background-color: #71d376;
 }
 
 new-task > form > * {
+  display: flex;
   padding: 4px;
   min-width: 0;
 }
 
 new-task > form > input[type=datetime-local] {
-  font-family: Consolas;
-  font-size: 0.5rem;
+  font-size: 0.6rem;
 }
 
 new-task > form > textarea {
@@ -280,8 +335,4 @@ new-task > form > textarea {
   grid-column-end: -1;
   resize: vertical;
   font-size: 0.8rem;
-}
-
-new-task > form:focus-within {
-  background-color: #71d376;
 }
