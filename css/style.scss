@@ -1,6 +1,9 @@
 $small-width : 768px;
 $header-color : orange;
 
+$section-border-radius : 8px;
+$section-content-border-radius : 4px;
+
 * {
     margin: 0;
     padding: 0;
@@ -153,11 +156,7 @@ section {
     margin-top: 16px;
 
     background-color: floralwhite;
-    border-radius: 8px;
-
-    & > * {
-        border-radius: 4px;
-    }
+    border-radius: $section-border-radius;
 
     & > header {
         font-size: 1.4em;
@@ -189,10 +188,6 @@ task-list {
             border-top-right-radius: 4px;
         }
     }
-
-    & > #more {
-        align-self: center;
-    }
 }
 
 a-task {
@@ -221,7 +216,7 @@ a-task {
         transform: scale(1.1);
         z-index: 1;
         box-shadow: 0 0 10px gray;
-        border-radius: 4px !important;
+        border-radius: $section-content-border-radius;
     }
 
     & > details {
@@ -275,20 +270,13 @@ a-task {
         & > .menu_bar {
             display: flex;
             align-items: center;
-            // justify-content: space-evenly;
+            justify-content: space-evenly;
             font-size: 0.7rem;
             border-bottom: 4px double var(--highlight-color);
+            user-select: none;
 
             & > * {
-                margin: 0 auto;
-                padding: 0.3em;
-            }
-
-            & > .created_at {
-                // margin-right: unset;
-                margin: unset;
-                font-style: italic;
-                color: #777;
+                margin: 0.3em 0;
             }
         }
     }
@@ -302,6 +290,7 @@ new-task {
         padding: 8px;
         grid-gap: 6px;
         background-color: #C8E6C9;
+        border-radius: $section-content-border-radius;
 
         & > * {
             padding: 4px;

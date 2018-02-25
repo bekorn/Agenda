@@ -136,10 +136,6 @@ section {
   border-radius: 8px;
 }
 
-section > * {
-  border-radius: 4px;
-}
-
 section > header {
   font-size: 1.4em;
   text-align: center;
@@ -170,10 +166,6 @@ task-list > #tasks > *:first-child {
   border-top-right-radius: 4px;
 }
 
-task-list > #more {
-  align-self: center;
-}
-
 a-task {
   --bg-odd-color: #81D4FA;
   --bg-even-color: #B3E5FC;
@@ -199,7 +191,7 @@ a-task:hover {
   transform: scale(1.1);
   z-index: 1;
   box-shadow: 0 0 10px gray;
-  border-radius: 4px !important;
+  border-radius: 4px;
 }
 
 a-task > details {
@@ -254,19 +246,14 @@ a-task > details > .description {
 a-task > details > .menu_bar {
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
   font-size: 0.7rem;
   border-bottom: 4px double var(--highlight-color);
+  user-select: none;
 }
 
 a-task > details > .menu_bar > * {
-  margin: 0 auto;
-  padding: 0.3em;
-}
-
-a-task > details > .menu_bar > .created_at {
-  margin: unset;
-  font-style: italic;
-  color: #777;
+  margin: 0.3em 0;
 }
 
 new-task > form {
@@ -275,6 +262,7 @@ new-task > form {
   padding: 8px;
   grid-gap: 6px;
   background-color: #C8E6C9;
+  border-radius: 4px;
 }
 
 new-task > form > * {
